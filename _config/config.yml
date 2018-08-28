@@ -1,0 +1,3 @@
+Silverstripe:
+  extensions:
+    - custom_footer

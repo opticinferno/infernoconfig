@@ -1,0 +1,24 @@
+{
+    "name": "gordon-opticblaze/OBConfig",
+    "description": "Adds a tab to the settings page that will easily allow footer changes to be made via the WYSIWYG editor.",
+    "type": "silverstripe-module",
+    "keywords": ["silverstripe", "OBConfig"],
+	"license": "BSD-3-Clause",
+    "authors": [
+    {
+        "name": "Optic Blaze",
+        "email": "gordon@opticblaze.co.za"
+    }],
+    "require": {
+        "silverstripe/framework": "~3.1",
+		"unclecheese/display-logic": "dev-master",
+		"tractorcow/silverstripe-colorpicker": "dev-master"
+    }
+	"repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://Skullies@bitbucket.org/opticblaze1/obconfig.git"
+        }
+    ]
+    
+}
