@@ -1,7 +1,22 @@
 <?php
+
+namespace Inferno\InfernoConfig\SiteConfig;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\FieldType\DBHTMLText;
+use TractorCow\Colorpicker\Forms\ColorField;
+
 class CustomFooter extends DataExtension {
-	
-	static $db = array(
+
+	private static $db = [
         'FooterContent' => 'HTMLText',
 		'FooterSubContent' => 'HTMLText',
 		'FooterWidth' =>'Varchar',
@@ -10,7 +25,7 @@ class CustomFooter extends DataExtension {
 		'SocialOptions' => 'Varchar',
 		'SocialColor' => 'Color',
 		'SocialSize' => 'Varchar',
-		
+
 		'FacebookLink' => 'Varchar',
 		'TwitterLink' => 'Varchar',
 		'GoogleLink' => 'Varchar',
@@ -20,7 +35,7 @@ class CustomFooter extends DataExtension {
 		'RSSLink' => 'Varchar',
 		'YoutubeLink' => 'Varchar',
 		'TripadviserLink' => 'Varchar',
-		
+
 		'Facebook' => 'Boolean',
 		'Twitter' => 'Boolean',
 		'Google' => 'Boolean',
@@ -48,36 +63,36 @@ class CustomFooter extends DataExtension {
 		'MobicredPayment' => 'Varchar',
 		'PayfastPayment' => 'Varchar',
 		'ContentOption' => 'Varchar',
-		
+
 		//Colors
 		'HeaderColor' => 'Color',
 		'TextColor' => 'Color',
 		'LinkColor' => 'Color',
 		'LinkHoverColor' => 'Color',
 		'BackgroundColor' => 'Color',
-				
-    );
-	
-	public static $has_one = array(
-	"Logo"=>"Image",
-	"SecondLogo" => "Image"
-	);
-	 
+
+    ];
+
+    private static $has_one = [
+	"Logo"=>File::class,
+	"SecondLogo" => Image::class
+	];
+
 	public function getCMSFields() {
    	$this->extend('updateCMSFields', $fields);
-	
+
  	return $fields;
 	}
-	
-	
-	
+
+
+
 	public function updateCMSFields(FieldList $fields) {
-		
+
 	$fields->addFieldToTab('Root.Main', new UploadField('Logo','Company Logo'));
 	$fields->addFieldToTab('Root.Main', new UploadField('SecondLogo','Mobile Logo'));
 	$fields->addFieldToTab('Root.Footer', new HTMLEditorField('FooterContent','Footer Content'));
 	$fields->addFieldToTab('Root.Footer', new HTMLEditorField('FooterSubContent','Footer Sub Content'));
-		//List options 
+		//List options
 			$ContainerList = array("container-fluid" => "Container Fluid", "container" => "Container");
 			$ContentList = array("0" => "None / Alone", "1" => "Left", "2" => "Center", "3" => "Right");
 		$SubList = array("0" => "None ", "1" => " Show");
@@ -99,12 +114,12 @@ class CustomFooter extends DataExtension {
 		CheckboxField::create("RSS","RSS Link")->addExtraClass('displayinline')->addExtraClass('displayinline')->hideIf("SocialOptions")->isEqualTo(0)->end(),
 		CheckboxField::create("Youtube","Youtube Link")->addExtraClass('displayinline')->addExtraClass('displayinline')->hideIf("SocialOptions")->isEqualTo(0)->end(),
 		CheckboxField::create("Tripadviser","Tripadviser Link")->addExtraClass('displayinline')->addExtraClass('displayinline')->hideIf("SocialOptions")->isEqualTo(0)->end(),
-			
+
 		DropdownField::create("SocialSize","Social Icon Size", $SocialSizeList)->hideIf("SocialOptions")->isEqualTo(0)->end(),
 		TextField::create("FacebookLink","Facebook Link")->displayIf("Facebook")->isChecked()
 			->andIf("SocialOptions")->isNotEqualTo(0)->end(),
-			
-			
+
+
 		TextField::create("TwitterLink","Twitter Link")->displayIf("Twitter")->isChecked()
 			->andIf("SocialOptions")->isNotEqualTo(0)->end(),
 		TextField::create("GoogleLink","Google+ Link")->displayIf("Google")->isChecked()
@@ -122,9 +137,9 @@ class CustomFooter extends DataExtension {
 		TextField::create("TripadviserLink","Tripadviser Link")->displayIf("Tripadviser")->isChecked()
 			->andIf("SocialOptions")->isNotEqualTo(0)->end(),
 		),'FooterContent');
-		
 
-		
+
+
 	//Payment Options
 		$PaymentOptionsList = array("0" => "None", "1" => "Left", "2" => "Center", "3" => "Right");
 		$PaymentSizeList = array("110px" => "Small", "150px" => "Small-medium", "200px" => "Medium", "300px" => "Larger");
@@ -145,10 +160,10 @@ class CustomFooter extends DataExtension {
 		TextField::create("PayfastPayment","Payfast Payment")->displayIf("Payfast")->isChecked()
 		->andIf("PaymentOptions")->isNotEqualTo(0)->end(),
 		),'FooterContent');
-		
-		
-		
-		
+
+
+
+
 	//Contact Details Option
 	$ContactPositionList = array("0" => "None", "1" => "Left", "2" => "Center", "3"=> "Right");
 		$ContactMapListOptions = array("0" => "None", "1" => "Left", "2" => "Center", "3"=> "Right");
@@ -160,19 +175,19 @@ class CustomFooter extends DataExtension {
 			TextField::create('ContactAddress', 'Address')->hideIf("ContactOptions")->isEqualTo(0)->end(),
 			TextField::create('ContactEmail', 'Email')->hideIf("ContactOptions")->isEqualTo(0)->end(),
 			DropdownField::create('ContactMapList', 'Map Display',$ContactMapListOptions)->hideIf("ContactOptions")->isEqualTo(0)->end(),
-			
+
 			TextField::create('ContactMap', 'Map')->displayIf("ContactOptions")->isEqualTo(1)
 			->andIf("ContactMapList")->isEqualTo(1)->end()
-        ),'FooterContent'); 
-		
-		
+        ),'FooterContent');
+
+
 		$fields->addFieldsToTab("Root.Footer", array(
 			ColorField::create("BackgroundColor","BackgroundColor"),
 			ColorField::create("HeaderColor","Headers color"),
 			ColorField::create("TextColor","Text Color"),
 			ColorField::create("LinkColor","Link Color"),
 			ColorField::create("LinkHoverColor","Link hover color")
-        ),'FooterContent'); 
-	} 
+        ),'FooterContent');
+	}
 }
 
