@@ -24,7 +24,7 @@
             "sheadawson/silverstripe-shortcodable": "dev-master",
             "jonom/focuspoint": "dev-master",
             "ryanpotter/silverstripe-cms-theme": "^3.4",
-            "iqnection-modules/embeddedcontent": "dev-master",
+//            "iqnection-modules/embeddedcontent": "dev-master", uncomment and when installed delete CssClasses function in EbeddedContent
             "silverstripe/googlesitemaps": "dev-master",
             "stevie-mayhew/silverstripe-svg": "dev-master"
 	},
