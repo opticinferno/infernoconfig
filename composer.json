@@ -1,0 +1,37 @@
+{
+    "name": "opticinferno/infernoconfig",
+    "description": "Simple add-on to enable Testimonials",
+    "type": "silverstripe-vendormodule",
+    "license": "BSD-3-Clause",
+    "keywords": ["inferno"
+    ],
+    "authors": [
+        {
+            "name": "Gordon Skinner",
+            "email": "gordon@opticblaze.co.za"
+        }
+    ],
+    	"require": {
+		"silverstripe/framework": "^4.1",
+		"iqnection-modules/simplecolorpickerfield": "dev-master",
+            "unclecheese/display-logic": "dev-master",
+            "tractorcow/silverstripe-colorpicker": "dev-master",
+            "silverstripe/recaptcha": "dev-master",
+            "silverstripe/userforms": "dev-master",
+            "littlegiant/silverstripe-seo-editor": "dev-master",
+            "colymba/gridfield-bulk-editing-tools": "dev-master",
+            "undefinedoffset/sortablegridfield": "dev-master",
+            "sheadawson/silverstripe-shortcodable": "dev-master",
+            "jonom/focuspoint": "dev-master",
+            "ryanpotter/silverstripe-cms-theme": "^3.4",
+            "iqnection-modules/embeddedcontent": "dev-master",
+            "silverstripe/googlesitemaps": "dev-master",
+            "stevie-mayhew/silverstripe-svg": "dev-master",
+	},
+"minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Inferno\\InfernoConfig\\": "src/"
+        }
+    }
+}
