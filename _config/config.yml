@@ -3,9 +3,9 @@ SilverStripe\SiteConfig\SiteConfig:
     - Inferno\InfernoConfig\SiteConfig\CustomFooter
 SilverStripe\Forms\HTMLEditor\TinyMCEConfig:
   editor_css:
-    - 'public/resources/themes/optic/css/opticCMS.css'
+    - 'themes/optic/css/opticCMS.css'
 SilverStripe\SiteConfig\SiteConfig:
-  cms_logo: 'public/resources/themes/optic/image/optic-logo.png'
+  cms_logo: 'themes/optic/image/optic-logo.png'
   cms_logo_width: 100
 SilverStripe\Admin\LeftAndMain:
   cms_background: '#521517'
