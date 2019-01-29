@@ -26,7 +26,7 @@
             "ryanpotter/silverstripe-cms-theme": "^3.4",
             "iqnection-modules/embeddedcontent": "dev-master",
             "silverstripe/googlesitemaps": "dev-master",
-            "stevie-mayhew/silverstripe-svg": "dev-master",
+            "stevie-mayhew/silverstripe-svg": "dev-master"
 	},
 "minimum-stability": "dev",
     "autoload": {
