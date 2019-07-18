@@ -1,6 +1,6 @@
 {
     "name": "opticinferno/infernoconfig",
-    "description": "Simple add-on to enable Testimonials",
+    "description": "Add Custom SiteConfig and Footer",
     "type": "silverstripe-vendormodule",
     "license": "BSD-3-Clause",
     "keywords": ["inferno"
